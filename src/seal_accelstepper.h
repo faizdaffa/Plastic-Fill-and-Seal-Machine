@@ -11,14 +11,22 @@ void accelStepper_innit()
 {
     stepperVertical.setMaxSpeed(1000);   // Set maximum speed value for the stepper
     stepperHorizontal.setMaxSpeed(1000); // Set maximum speed value for the stepper
-    // stepper1.setAcceleration(500); // Set acceleration value for the stepper
+    stepperVertical.setAcceleration(500); // Set acceleration value for the stepper
+    stepperHorizontal.setAcceleration(500); // Set acceleration value for the stepper
 }
 
-void testStepper()
+void move_stepper()
 {
     stepperVertical.setSpeed(set_speed);
     stepperHorizontal.setSpeed(set_speed);
-    // Step the motor with a constant speed previously set by setSpeed();
+    stepperHorizontal.runSpeed();
+    stepperVertical.runSpeed();
+}
+
+void stop_stepper()
+{
+    stepperVertical.setSpeed(0);
+    stepperHorizontal.setSpeed(0);
     stepperHorizontal.runSpeed();
     stepperVertical.runSpeed();
 }

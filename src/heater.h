@@ -41,7 +41,7 @@ void main_heater()
     }
     else
     {
-        if (currentMillisHeater - previousMillisHeater >= 1000)
+        if (currentMillisHeater - previousMillisHeater >= 5000)
         {
             digitalWrite(LPWM_HORIZONTAL, HIGH);
             digitalWrite(RPWM_HORIZONTAL, LOW);
