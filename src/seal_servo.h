@@ -32,26 +32,26 @@ void moveServo()
 
   if (isServoMove)
   {
-    if (currentMillisServo - previousMillisServo >= 3000)
+    if (currentMillisServo - previousMillisServo >= 1000)
     {
-      Serial.println("Close Seal");
       digitalWrite(POMPA, HIGH);
       servoVertical.write(120);
       servoHorizontal.write(65);
       isServoMove = false;
       previousMillisServo = currentMillisServo;
+      Serial.println("Close Seal");
     }
   }
   else
   {
-    if (currentMillisServo - previousMillisServo >= 1000)
+    if (currentMillisServo - previousMillisServo >= 2000)
     {
-      Serial.println("Open Seal");
       digitalWrite(POMPA, LOW);
       servoVertical.write(20);
       servoHorizontal.write(0);
       isServoMove = true;
       previousMillisServo = currentMillisServo;
+      Serial.println("Open Seal");
     }
   }
 }

@@ -9,7 +9,7 @@
 
 unsigned long previousMillisHeater = 0;
 bool heaterState = false;
-uint16_t pwm_heater = 500;
+uint16_t pwm_heater = 100;
 
 void heater_innit()
 {
@@ -26,7 +26,7 @@ void main_heater()
     unsigned long currentMillisHeater = millis();
     if (heaterState)
     {
-        if (currentMillisHeater - previousMillisHeater >= 2000)
+        if (currentMillisHeater - previousMillisHeater >= 1000)
         {
             // digitalWrite(LPWM_HORIZONTAL, HIGH);
             // digitalWrite(RPWM_HORIZONTAL, LOW);
@@ -41,12 +41,12 @@ void main_heater()
     }
     else
     {
-        if (currentMillisHeater - previousMillisHeater >= 5000)
+        if (currentMillisHeater - previousMillisHeater >= 1000)
         {
-            digitalWrite(LPWM_HORIZONTAL, HIGH);
-            digitalWrite(RPWM_HORIZONTAL, LOW);
-            analogWrite(PWM_HORIZONTAL, 0);
-            digitalWrite(LPWM_VERTICAL, HIGH);
+            // digitalWrite(LPWM_HORIZONTAL, HIGH);
+            // digitalWrite(RPWM_HORIZONTAL, LOW);
+            // analogWrite(PWM_HORIZONTAL, 0);
+            digitalWrite(LPWM_VERTICAL, LOW);
             digitalWrite(RPWM_VERTICAL, LOW);
             analogWrite(PWM_VERTICAL, 0);
             // Serial.println("Heater OFF");
